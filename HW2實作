@@ -1,1 +1,141 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Forward declaration
+class Polynomial;
+
+class Term {
+    friend class Polynomial;
+private:
+    float coef; // Coefficient
+    int exp;    // Exponent
+};
+
+class Polynomial {
+private:
+    Term* termArray; // Array of non-zero terms
+    int capacity;    // Size of termArray
+    int terms;       // Number of non-zero terms
+
+    void Resize() {
+        capacity *= 2;
+        Term* newArray = new Term[capacity];
+        for (int i = 0; i < terms; ++i)
+            newArray[i] = termArray[i];
+        delete[] termArray;
+        termArray = newArray;
+    }
+
+public:
+    // Constructor
+    Polynomial(int cap = 10) : capacity(cap), terms(0) {
+        termArray = new Term[capacity];
+    }
+
+    // Copy constructor
+    Polynomial(const Polynomial& other) {
+        capacity = other.capacity;
+        terms = other.terms;
+        termArray = new Term[capacity];
+        for (int i = 0; i < terms; ++i)
+            termArray[i] = other.termArray[i];
+    }
+
+    // Destructor
+    ~Polynomial() {
+        delete[] termArray;
+    }
+
+    // Add a term
+    void NewTerm(float coef, int exp) {
+        if (coef == 0) return;
+        if (terms == capacity)
+            Resize();
+        termArray[terms].coef = coef;
+        termArray[terms].exp = exp;
+        terms++;
+    }
+
+    // Add: this + poly
+    Polynomial Add(const Polynomial& poly) const {
+        Polynomial result;
+        int i = 0, j = 0;
+        while (i < terms && j < poly.terms) {
+            if (termArray[i].exp == poly.termArray[j].exp) {
+                float sum = termArray[i].coef + poly.termArray[j].coef;
+                if (sum != 0)
+                    result.NewTerm(sum, termArray[i].exp);
+                ++i; ++j;
+            } else if (termArray[i].exp > poly.termArray[j].exp) {
+                result.NewTerm(termArray[i].coef, termArray[i].exp);
+                ++i;
+            } else {
+                result.NewTerm(poly.termArray[j].coef, poly.termArray[j].exp);
+                ++j;
+            }
+        }
+        for (; i < terms; ++i)
+            result.NewTerm(termArray[i].coef, termArray[i].exp);
+        for (; j < poly.terms; ++j)
+            result.NewTerm(poly.termArray[j].coef, poly.termArray[j].exp);
+        return result;
+    }
+
+    // Multiply: this * poly
+    Polynomial Mult(const Polynomial& poly) const {
+        Polynomial result;
+        for (int i = 0; i < terms; ++i) {
+            Polynomial temp;
+            for (int j = 0; j < poly.terms; ++j) {
+                float newCoef = termArray[i].coef * poly.termArray[j].coef;
+                int newExp = termArray[i].exp + poly.termArray[j].exp;
+                temp.NewTerm(newCoef, newExp);
+            }
+            result = result.Add(temp);
+        }
+        return result;
+    }
+
+    // Evaluate: p(f)
+    float Eval(float f) const {
+        float result = 0;
+        for (int i = 0; i < terms; ++i) {
+            result += termArray[i].coef * pow(f, termArray[i].exp);
+        }
+        return result;
+    }
+
+    // Overload >>
+    friend istream& operator>>(istream& is, Polynomial& poly) {
+        int n;
+        cout << "Enter number of terms: ";
+        is >> n;
+        cout << "Enter " << n << " terms (coefficient exponent):\n";
+        for (int i = 0; i < n; ++i) {
+            float c; int e;
+            is >> c >> e;
+            poly.NewTerm(c, e);
+        }
+        return is;
+    }
+
+    // Overload <<
+    friend ostream& operator<<(ostream& os, const Polynomial& poly) {
+        if (poly.terms == 0) {
+            os << "0";
+            return os;
+        }
+
+        for (int i = 0; i < poly.terms; ++i) {
+            if (i > 0 && poly.termArray[i].coef > 0)
+                os << " + ";
+            if (poly.termArray[i].exp == 0)
+                os << poly.termArray[i].coef;
+            else
+                os << poly.termArray[i].coef << "x^" << poly.termArray[i].exp;
+        }
+        return os;
+    }
+};
 

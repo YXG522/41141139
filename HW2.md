@@ -10,6 +10,8 @@
 
 [C++](HW2實作)
 
+## class Term（私有內部類別）
+
 class Term {
     
     friend class Polynomial;
@@ -21,3 +23,23 @@ private:
     int exp;      // 指數
 
 };
+
+class Polynomial:
+
+Term* termArray: 儲存所有非零項的動態陣列
+
+int capacity: 陣列的容量
+
+int terms: 當前項數
+
+公開功能函式：
+
+Add(const Polynomial&): 加法
+
+Mult(const Polynomial&): 乘法
+
+Eval(float): 求值
+
+NewTerm(float, int): 新增一項
+
+運算子多載：>>, <<

@@ -10,7 +10,7 @@
 
 [C++](HW2實作)
 
-## class Term（私有內部類別）
+**class Term（私有內部類別）**
 
 class Term {
     
@@ -24,7 +24,7 @@ private:
 
 };
 
-class Polynomial:
+**class Polynomial:**
 
 Term* termArray: 儲存所有非零項的動態陣列
 
@@ -32,7 +32,7 @@ int capacity: 陣列的容量
 
 int terms: 當前項數
 
-公開功能函式：
+**公開功能函式：**
 
 Add(const Polynomial&): 加法
 

@@ -1,0 +1,11 @@
+#include <cmath>
+
+float Evaluate(float x) const {
+    float sum = 0;
+    Node* p = head->link;
+    while (p != head) {
+        sum += p->coef * pow(x, p->exp);
+        p = p->link;
+    }
+    return sum;
+}

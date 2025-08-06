@@ -131,5 +131,20 @@ n c1 e1 c2 e2 ... cn en
 
 result = result + temp
 
+[實作](https://github.com/YXG522/41141139/blob/16fbbbc5c81739ba8e9dc163ee0b6fb70523a6a9/HW3%20h%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
+
+## (i) Evaluate
+
+**功能說明**
+
+計算多項式在 x 的值。
+
+**概念**
+
+公式:
+
+sum += coef * (x ^ exp)
+
+
 
 

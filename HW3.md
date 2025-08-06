@@ -145,6 +145,7 @@ result = result + temp
 
 sum += coef * (x ^ exp)
 
+[實作](https://github.com/YXG522/41141139/blob/f6b8aec06dce4dfaaa88ab7fcfac756cc4bba34e/HW3%20i%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
 
 
 

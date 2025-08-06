@@ -23,7 +23,7 @@ n c1 e1 c2 e2 ... cn en
 3.注意要保持遞減指數順序
 
 
-[完整實作](HW3 a小題實作)
+[完整實作](https://github.com/YXG522/41141139/blob/d05584acbc671059acf1275c55985276854c0ebe/HW3%20a%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
 
 
 

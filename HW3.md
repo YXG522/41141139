@@ -104,3 +104,32 @@ n c1 e1 c2 e2 ... cn en
 ◎當指數不相同，複製節點
 
 ◎最後若 q 剩下，記得把係數取「負」
+
+[實作](https://github.com/YXG522/41141139/blob/d16edcfc56972c173ab3cb994e4fe0d8a4a29cda/HW3%20g%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
+
+## (h) operator* (乘法運算子)
+
+**功能說明**
+
+回傳 *this * b。
+
+**概念**
+
+乘法要做「項與項相乘」並累加同次方。
+
+步驟：
+
+1.初始化空多項式 result。
+
+2.遍歷 p 中每一項：
+
+對每個 q：
+
+生成單項式 (coef1*coef2, exp1+exp2)
+
+加到中間多項式 temp
+
+result = result + temp
+
+
+

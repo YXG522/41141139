@@ -14,7 +14,7 @@ n c1 e1 c2 e2 ... cn en
 
 5x^4 - 2x^3 + 1
 
-**概念講解**
+**概念**
 
 1.首先刪除原先節點（若有）。
 
@@ -24,6 +24,8 @@ n c1 e1 c2 e2 ... cn en
 
 
 [完整實作](https://github.com/YXG522/41141139/blob/d05584acbc671059acf1275c55985276854c0ebe/HW3%20a%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
+
+**(b) operator<< (輸出運算子)**
 
 
 

@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+// Node結構：每個多項式項目
+struct Node {
+    int coef;   // 係數
+    int exp;    // 指數
+    Node* link; // 下一個節點
+};
+
+// Polynomial類別
+class Polynomial {
+private:
+    Node* head; // 頭節點
+public:
+    // 建構子：建立一個空多項式
+    Polynomial() {
+        head = new Node; // 頭節點
+        head->link = head; // 循環串列
+    }
+
+    // 其他功能會在後面實作
+};

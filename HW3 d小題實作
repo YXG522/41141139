@@ -1,0 +1,17 @@
+const Polynomial& operator=(const Polynomial& a) {
+    if (this != &a) {
+        clear();
+        Node* last = head;
+        Node* p = a.head->link;
+        while (p != a.head) {
+            Node* newNode = new Node;
+            newNode->coef = p->coef;
+            newNode->exp = p->exp;
+            last->link = newNode;
+            last = newNode;
+            p = p->link;
+        }
+        last->link = head;
+    }
+    return *this;
+}

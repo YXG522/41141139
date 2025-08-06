@@ -1,0 +1,55 @@
+Polynomial operator+(const Polynomial& b) const {
+    Polynomial result;
+    Node* p = this->head->link;
+    Node* q = b.head->link;
+    Node* last = result.head;
+
+    while (p != this->head && q != b.head) {
+        if (p->exp > q->exp) {
+            Node* newNode = new Node;
+            newNode->coef = p->coef;
+            newNode->exp = p->exp;
+            last->link = newNode;
+            last = newNode;
+            p = p->link;
+        } else if (p->exp < q->exp) {
+            Node* newNode = new Node;
+            newNode->coef = q->coef;
+            newNode->exp = q->exp;
+            last->link = newNode;
+            last = newNode;
+            q = q->link;
+        } else {
+            int sumCoef = p->coef + q->coef;
+            if (sumCoef != 0) {
+                Node* newNode = new Node;
+                newNode->coef = sumCoef;
+                newNode->exp = p->exp;
+                last->link = newNode;
+                last = newNode;
+            }
+            p = p->link;
+            q = q->link;
+        }
+    }
+    // 剩下的
+    while (p != this->head) {
+        Node* newNode = new Node;
+        newNode->coef = p->coef;
+        newNode->exp = p->exp;
+        last->link = newNode;
+        last = newNode;
+        p = p->link;
+    }
+    while (q != b.head) {
+        Node* newNode = new Node;
+        newNode->coef = q->coef;
+        newNode->exp = q->exp;
+        last->link = newNode;
+        last = newNode;
+        q = q->link;
+    }
+
+    last->link = result.head;
+    return result;
+}

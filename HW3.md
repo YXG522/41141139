@@ -61,10 +61,12 @@ n c1 e1 c2 e2 ... cn en
 
 先清空 *this，再複製 a。
 
+[實作](https://github.com/YXG522/41141139/blob/db47846f86e4e977b99db7d0c3837234cf5556ff/HW3%20d%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
 
+## (e) 解構子
 
+**功能說明**
 
-
-
+釋放所有節點記憶體。
 
 

@@ -1,0 +1,25 @@
+Polynomial operator*(const Polynomial& b) const {
+    Polynomial result;
+
+    Node* p = this->head->link;
+    while (p != this->head) {
+        Polynomial temp;
+        Node* q = b.head->link;
+        Node* last = temp.head;
+
+        while (q != b.head) {
+            Node* newNode = new Node;
+            newNode->coef = p->coef * q->coef;
+            newNode->exp = p->exp + q->exp;
+            last->link = newNode;
+            last = newNode;
+            q = q->link;
+        }
+        last->link = temp.head;
+
+        result = result + temp; // 加到累積結果
+        p = p->link;
+    }
+
+    return result;
+}

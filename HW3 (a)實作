@@ -1,0 +1,38 @@
+先在 Polynomial 裡新增 clear() 用來清空原有節點：
+
+void clear() {
+    Node* p = head->link;
+    while (p != head) {
+        Node* temp = p;
+        p = p->link;
+        delete temp;
+    }
+    head->link = head;
+}
+
+再來是 operator>>:
+
+friend istream& operator>>(istream& is, Polynomial& x) {
+    x.clear(); // 刪除原來的節點
+
+    int n;
+    is >> n;
+    Node* last = x.head; // 從頭節點開始
+
+    for (int i = 0; i < n; i++) {
+        int coef, exp;
+        is >> coef >> exp;
+
+        Node* newNode = new Node;
+        newNode->coef = coef;
+        newNode->exp = exp;
+
+        // 插入到串列尾端
+        last->link = newNode;
+        last = newNode;
+    }
+    // 串成循環
+    last->link = x.head;
+
+    return is;
+}

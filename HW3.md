@@ -49,3 +49,22 @@ n c1 e1 c2 e2 ... cn en
 
 走訪 a 的節點，把每一個節點複製到 *this。
 
+[實作](https://github.com/YXG522/41141139/blob/c083eb503c77952ce98e0cc3e9488eead1ccc2a1/HW3%20c%E5%B0%8F%E9%A1%8C%E5%AF%A6%E4%BD%9C)
+
+## (d) 賦值運算子
+
+**功能說明**
+
+把 a 指派給 *this。
+
+**概念**
+
+先清空 *this，再複製 a。
+
+
+
+
+
+
+
+

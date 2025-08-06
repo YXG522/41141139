@@ -1,0 +1,10 @@
+friend ostream& operator<<(ostream& os, const Polynomial& x) {
+    Node* p = x.head->link;
+    while (p != x.head) {
+        os << p->coef << "x^" << p->exp;
+        p = p->link;
+        if (p != x.head)
+            os << " + ";
+    }
+    return os;
+}
